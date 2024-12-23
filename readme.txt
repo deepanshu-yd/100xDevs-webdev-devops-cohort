@@ -11,3 +11,13 @@ Points to remember:
 - Get Decent skills and then find 3-4 motivated people
 - Open source programs are the best internships that you can do
 - Should spend ~20 hrs/week on cohort materials. Don't drop off
+
+
+
+Steps to add the code to a particular github repo
+# git init
+# git remote add origin <repolink>
+# git branch -M main
+# git add .
+# git commit -m "Message"
+# git push --set-upstream origin main
