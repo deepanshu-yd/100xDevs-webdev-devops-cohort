@@ -21,3 +21,6 @@ Steps to add the code to a particular github repo
 # git add .
 # git commit -m "Message"
 # git push --set-upstream origin main
+
+# git checkout -B master
+# git
