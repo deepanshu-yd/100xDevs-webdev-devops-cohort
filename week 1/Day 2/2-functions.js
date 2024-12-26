@@ -3,5 +3,5 @@ function greet(name) {
 	return "Hello" + name;
 }
 
-// function
+// function call
 let message = greet("Deepanshu");
