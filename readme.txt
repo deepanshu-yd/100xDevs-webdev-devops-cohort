@@ -14,13 +14,8 @@ Points to remember:
 
 
 
-Steps to add the code to a particular github repo
+Pushing code ot github
 # git init
-# git remote add origin <repolink>
-# git branch -M main
 # git add .
 # git commit -m "Message"
-# git push --set-upstream origin main
-
-# git checkout -B master
-# git
+# git push origin main
