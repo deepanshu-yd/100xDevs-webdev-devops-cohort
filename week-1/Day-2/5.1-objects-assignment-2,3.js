@@ -8,7 +8,16 @@ function greet(user) {
 	else {
 		genderSpec = "Mrs";
 	}
-	console.log("Hi " + genderSpec + " " + user.name + ", your age is " + user.age);
+	
+	let voteOrNot = "";
+	if (user.age >= 18) {
+		voteOrNot = "legal to Vote";
+	}
+	else {
+		voteOrNot = "not legal to vote";
+	}
+
+	console.log("Hi " + genderSpec + " " + user.name + ", your age is " + user.age + ". You are " + voteOrNot);
 }
 
 let user = {
