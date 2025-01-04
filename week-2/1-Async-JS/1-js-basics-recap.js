@@ -23,3 +23,5 @@ function sum(n) {
 
 const ans = sum(100);
 console.log(ans);
+
+// synchronous code runs in the order of which it is written
