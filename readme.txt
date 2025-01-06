@@ -12,7 +12,7 @@ Points to remember:
 - Open source programs are the best internships that you can do
 - Should spend ~20 hrs/week on cohort materials. Don't drop off
 
-
+To comment out a particular code --> Shift + Alt + A
 
 Pushing code ot github
 # git init
