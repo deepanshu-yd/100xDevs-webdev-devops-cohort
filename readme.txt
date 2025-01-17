@@ -19,3 +19,5 @@ Pushing code ot github
 # git add .
 # git commit -m "Message"
 # git push origin main
+
+DO GITHUB DAILY
