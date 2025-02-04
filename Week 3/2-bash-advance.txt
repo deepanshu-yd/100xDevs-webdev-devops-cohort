@@ -1,0 +1,17 @@
+To exit vim: crtl+c, then :wq <ENTER>
+
+// Bash Advance by Laisha
+
+commands -> functions
+1.1. ls -> lists all the files and directories in the current directory
+1.2. ls "filename" -> lists all the files and directories in the mentioned filename
+1.3. ls -l -> lists all the files, directories and their details
+1.4. ls -l "filename" -> lists all the files, directories and details of the mentioned filename
+1.5. ls -R "filename" -> lists all the files, directories and details of the files and directories mentioned in the filename directory
+1.6. ls -t "filename" -> list of last modified files
+1.7. ls -lt "filename" -> list of last modified files and all their details
+1.8. ls -ls "filename" -> lists all of the hidden files present mentioned in the filename (like .git, .gitignore, etc)
+1.9. ls -lRa "filename" -> lists all of the hidden files present within the subdirectories of the filename
+1.10. ls -s "filename" -> list of all the files and direcotries present by size
+1.11 ls -lR | grep .js  -> lists of all the .js files present in the current directory (higher directory level/ folder level)
+
