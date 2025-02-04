@@ -1,1 +1,11 @@
-// A promise in JavaScrip is an object that represents the eventual completion (or faliure) of an asynchronous operation and its resulting value
+function random() {
+
+}
+
+let p = new Promise(random);
+
+function callback() {
+	console.log("Promise Succeded");
+}
+
+p.then(callback)

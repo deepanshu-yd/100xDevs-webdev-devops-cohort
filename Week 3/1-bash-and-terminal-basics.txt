@@ -15,3 +15,9 @@ Commands for *wsl*:
 Commands for *node*:
 nvm -- node verison manager
 npm -- node package manager
+
+/// Bash Advance by Laisha
+
+commands - functionalities
+1. ls - lists items
+2. 
