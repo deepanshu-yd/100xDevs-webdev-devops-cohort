@@ -1,0 +1,17 @@
+Terminal is nothing but another interface to do things on your machine
+
+Commands for *wsl*: 
+1. pwd - print working directory
+2. cd - current directory
+3. cd .. - previous folder // cd../.. - twice the previous folder
+4. ls - list of all the folders
+5. mkdir <folder name here> - creates a folder
+6. touch <file name here> - creates a file
+7. cat - prints the contents of the file
+8. vi - [Quite hard, no need] Edit a file from the Terminal
+9. mv <file name> <where to move it> - move folder from one place to another
+10. cp <file name> <place name> - copy file from one place to another // while moving form different folders, use --> cp -r <file name> <place name>
+
+Commands for *node*:
+nvm -- node verison manager
+npm -- node package manager
