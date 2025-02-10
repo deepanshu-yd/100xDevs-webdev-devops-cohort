@@ -16,3 +16,8 @@ x --------------------------- delete character
 dd -------------------------- delete entire line
 
 u --------------------------- undo
+
+:set number ----------------- sets the line number for each line, then :<line number> to navigate to that particular line
+
+Link: https://youtu.be/-txKSRn0qeA?si=0iD9mHyavvtfn6ib
+

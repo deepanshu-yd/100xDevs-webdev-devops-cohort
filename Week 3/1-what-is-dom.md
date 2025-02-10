@@ -1,5 +1,11 @@
 # DOM: Document Object Model is a programming interface for web documents
 
+## It's like a tree model:
+											window 
+										document
+											 html
+										head |  body
+
 ## Class summary:
 - script tag before </ body>
 
