@@ -1,0 +1,18 @@
+
+vim "filename"--------------- open a file
+
+:q -------------------------- closes the unmodified file
+:q! ------------------------- quit, discard changes
+:wq ------------------------- save and exit
+
+vim modes|
+i---------------------------- insert
+:---------------------------- command
+v---------------------------- visual
+
+hjkl OR arrow keys ---------- move around lines
+
+x --------------------------- delete character
+dd -------------------------- delete entire line
+
+u --------------------------- undo
