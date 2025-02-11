@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo - Deleting Elements</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <div>
+      <div id="todo-1" style="display: flex;">
+        <h2>Todo 1</h2>
+				<button onclick="deleteTodo(1)">Delete todo-</button>
+      </div>
+      <div id="todo-2" style="display: flex;">
+        <h2>Todo 2</h2>
+				<button onclick="deleteTodo(2)">Delete todo-</button>
+      </div>
+    </div>
+	<button>Add Todo</button>
+  </body>
+	<script>
+		function deleteTodo(index){
+			const element = document.getElementById("todo-" + index);
+			element.parentNode.removeChild(element);
+		}
+	</script>
+</html>
+
+<!-- Solved by myself, copied most of the part
+- html structure done
+- made mistakes in making a div on todo 1 and 2
+- fully copied the js code -->
+
+<!-- do it once again fully -->
