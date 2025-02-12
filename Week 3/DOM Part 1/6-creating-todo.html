@@ -1,0 +1,19 @@
+<html>
+	<body>
+		<input type="text" placeholder="Add your todo here">
+		<button onclick="addTodo()">Add Todo here</button>
+	</body>
+	<script>
+		function addTodo() {
+
+			const inputEl = document.querySelector("input");
+			const value = inputEl.value; 
+			// This is how to extract the inner value form the input element (get the value form input)
+
+			const newDivEl = document.createElement("div");
+			newDivEl.innerHTML = value;
+
+			document.querySelector("body").appendChild(newDivEl)
+		}
+	</script>
+</html>
