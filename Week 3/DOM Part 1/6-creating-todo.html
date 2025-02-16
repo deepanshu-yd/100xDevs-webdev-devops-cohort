@@ -1,19 +1,30 @@
 <html>
-	<body>
-		<input type="text" placeholder="Add your todo here">
-		<button onclick="addTodo()">Add Todo here</button>
-	</body>
-	<script>
-		function addTodo() {
 
-			const inputEl = document.querySelector("input");
-			const value = inputEl.value; 
-			// This is how to extract the inner value form the input element (get the value form input)
+<body>
+  <input type="text"></input>
+  <button onclick="addTodo()">Add todo!</button>
+</body>
+<script>
+  let ctr = 1;
+  function deleteTodo(index) {
+    const element = document.getElementById(index);
+    element.parentNode.removeChild(element);
+  }
 
-			const newDivEl = document.createElement("div");
-			newDivEl.innerHTML = value;
+  function addTodo() {
+    const inputEl = document.querySelector("input");
+    const value = inputEl.value;
 
-			document.querySelector("body").appendChild(newDivEl)
-		}
-	</script>
+    const newDivEl = document.createElement("div");
+    newDivEl.setAttribute("id", ctr);
+
+    newDivEl.innerHTML = "<div>" + value + '</div><button onclick="deleteTodo(' + ctr + ')">delete</button>';
+
+    document.querySelector("body").appendChild(newDivEl)
+		ctr = ctr + 1;
+  }
+</script>
+
 </html>
+
+<!-- Practice this again and also chak out the second approach -->
