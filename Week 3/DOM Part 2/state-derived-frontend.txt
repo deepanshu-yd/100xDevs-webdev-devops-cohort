@@ -1,0 +1,5 @@
+Some Jargons:
+
+1. State: Variable part of an app
+2. Component: How to render state on the screen(or a static wireframe of what we want to render)
+3. Rendering: Taking the state and rendering it on the DOM based on the components(take state and put the component in the DOM)
