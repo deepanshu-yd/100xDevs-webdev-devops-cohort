@@ -21,3 +21,5 @@ Pushing code ot github
 # git push origin main
 
 DO GITHUB DAILY
+
+To open a particular folder of in WSL: cd "/mnt/c/users/deepanshu/<filename>"
