@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+</head>
+<body>
+    <div id="posts">Axios</div>
+   <script>
+     async function getRecentPost() {
+        alert("before sending request");
+        const response = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+        alert("after sending request");
+        document.getElementById("posts").innerHTML = response.data.title;
+    }
+    getRecentPost();
+   </script>
+</body>
+</html>
