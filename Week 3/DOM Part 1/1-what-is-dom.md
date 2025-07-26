@@ -1,13 +1,13 @@
 # DOM: Document Object Model is a programming interface for web documents
 
 ## It's like a tree model:
-											window 
+											window
 										document
 											 html
 										head |  body
 
 ## Class summary:
-- script tag before </ body>
+- script tag before </ body>	
 
 1. querySelector (refer index.html)
 2. querySelectorAll

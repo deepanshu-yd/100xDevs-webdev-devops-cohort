@@ -1,0 +1,3 @@
+Hello world! This is a test file with some words.
+It has multiple lines and different types of content.
+Let's see how many words it contains in total.
