@@ -15,7 +15,7 @@ program.command('count')
       if (err) {
         console.log(err);
       } else {
-        const lines = data.split('\n').length;
+        const lines = data.split(' ').length;
         console.log(`There are ${lines} lines in ${file}`);
       }
     });
@@ -24,3 +24,6 @@ program.command('count')
 program.parse();
 
 // to count run --> node index.js count /home/deepanshu/Projects/...<txt-filepath>
+// OR npm run start count "/home/deepanshu/Projects/100xDevs-webdev-devops-cohort/Week 4/w4-assignment-1/test.txt"
+
+// blackbox overview -> import all the dependencies >> program name and details, if putting on npm registry >> command datails and action that tells system how to do the process >> runs the program using program.parse()
