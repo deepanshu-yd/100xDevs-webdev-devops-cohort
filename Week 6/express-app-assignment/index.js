@@ -33,7 +33,7 @@ app.post("/signin", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    const user = users.find(user.username === username && user.password === password);
+    const user = users.find( user => user.username === username && user.password === password);
 
     if(user){
         const token = generateToken();
@@ -42,12 +42,26 @@ app.post("/signin", (req, res) => {
             token
         })
         console.log(users);
-    }
-    else{
+    } else{
         res.status(403).send({
             message: "Invalid username and password"
         })
     }
 });
+
+app.get("/me", (req, res) => {
+    const token = req.headers.authorization;
+    const user = users.find(user => user.token === token);
+
+    if (user){
+        res.send({
+            username: user.username
+        })
+    } else {
+        res.status(401).send({
+            message: "Unauthorized"
+        })
+    }
+})
 
 app.listen(3000);
