@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Authentication Application</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+</head>
+<body>
+    <div>
+        Signup
+        <input type="text" name="username" placeholder="Enter your username">
+        <input type="text" name="password" placeholder="Enter your password">
+        <button onclick="signup()">Submit</button>
+    </div>
+
+    <div>
+        Signin
+        <input type="text" name="username" placeholder="Enter your username">
+        <input type="text" name="password" placeholder="Enter your password">
+        <button onclick="signin()">Submit</button>
+    </div>
+
+    <div>
+        User Information:
+        <div id="information"></div>
+    </div>
+
+    <div>
+        Logout
+        <button onclick="logout()">Logout</button>
+    </div>
+</body>
+</html>
