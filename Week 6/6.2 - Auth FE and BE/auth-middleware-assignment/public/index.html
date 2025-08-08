@@ -9,15 +9,15 @@
 <body>
     <div>
         Signup
-        <input type="text" name="username" placeholder="Enter your username">
-        <input type="text" name="password" placeholder="Enter your password">
+        <input type="text" id="signup-username" name="username" placeholder="Enter your username">
+        <input type="text" id="signup-password" name="password" placeholder="Enter your password">
         <button onclick="signup()">Submit</button>
     </div>
 
     <div>
         Signin
-        <input type="text" name="username" placeholder="Enter your username">
-        <input type="text" name="password" placeholder="Enter your password">
+        <input type="text" id="signin-username" name="username" placeholder="Enter your username">
+        <input type="password" id="signin-password" name="password" placeholder="Enter your password">
         <button onclick="signin()">Submit</button>
     </div>
 
@@ -31,4 +31,66 @@
         <button onclick="logout()">Logout</button>
     </div>
 </body>
+
+<script>
+    // Signup Function
+    async function signup() {
+        const username = document.getElementById("signup-username").value;
+        const password = document.getElementById("signup-password").value;
+
+        if (!username.trim() || !password.trim()) {
+            alert("Please enter both username and password.");
+            return;
+        }
+
+        const response = await axios.post("/signup", {
+            username: username,
+            password: password
+        })
+        alert("Signed up successfully");
+    }
+
+    // Signin function
+    async function signin() {
+        const username = document.getElementById("signin-username").value;
+        const password = document.getElementById("signin-password").value;
+
+        if (!username.trim() || !password.trim()) {
+            alert("Please enter both username and password.");
+            return;
+        }
+
+        const response = await axios.post("/signin", {
+            username: username,
+            password: password
+        })
+
+        localStorage.setItem("token", response.data.token);
+
+        alert("Signed in successfully!");
+        await getUserInformation();
+    }
+
+    // logout function
+    async function logout() {
+        localStorage.removeItem("token");
+        document.getElementById("information").innerHTML = "";
+    }
+
+    // getUserInformation
+    async function getUserInformation() {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            const response = await axios.get("/me", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            document.getElementById("information").innerHTML = response.data.username;
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', getUserInformation);
+</script>
 </html>

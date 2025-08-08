@@ -4,10 +4,12 @@
 
 const express = require ('express');
 const jwt = require("jsonwebtoken");
+const path = require("path");
 
 const app = express();
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 const JWT_SECRET = "deepanshuilovecomputers";
 
@@ -16,6 +18,11 @@ const users = [];
 app.post("/signup", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+
+    // Require both username and password
+    if (!username || !password || !String(username).trim() || !String(password).trim()) {
+        return res.status(400).json({ message: "Username and password are required" });
+    }
 
     users.push({
         username: username,
@@ -30,6 +37,11 @@ app.post("/signup", (req, res) => {
 app.post("/signin", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+
+    // Require both username and password
+    if (!username || !password || !String(username).trim() || !String(password).trim()) {
+        return res.status(400).json({ message: "Username and password are required" });
+    }
 
     const user = users.find( user => user.username === username && user.password === password);
 
@@ -51,17 +63,25 @@ app.post("/signin", (req, res) => {
 });
 
 function auth(req, res, next){
-    const token = req.headers.authorization;
-    const decodedInformation = jwt.verify(token, JWT_SECRET);
-    if (decodedInformation.username){
-        req.username = decodedInformation.username;
-        next();
-    } else {
-        res.json({
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+        return res.status(401).json({
             message: "You are not logged in"
-        })
+        });
     }
 
+    const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
+
+    try {
+        const decodedInformation = jwt.verify(token, JWT_SECRET);
+        if (decodedInformation.username){
+            req.username = decodedInformation.username;
+            return next();
+        }
+        return res.status(401).json({ message: "You are not logged in" });
+    } catch (e) {
+        return res.status(401).json({ message: "Invalid or expired token" });
+    }
 }
 
 app.get("/me", auth, (req, res) => {
