@@ -1,10 +1,11 @@
+const bcrypt = require("bcrypt");
 const express = require("express");
 const { UserModel, TodoModel } = require("./db");
 const { auth, JWT_SECRET } = require("./auth");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
-mongoose.connect("")
+mongoose.connect("mongodb+srv://admin:T2dUdk8Pt6yp3wJa@cluster0.xhweybd.mongodb.net/todo-mongodb-week-7")
 
 const app = express();
 app.use(express.json());
@@ -14,9 +15,12 @@ app.post("/signup", async function(req, res) {
     const password = req.body.password;
     const name = req.body.name;
 
+    const hashedPassword = await bcrypt.hash(password, 5);
+    console.log(hashedPassword);
+
     await UserModel.create({
         email: email,
-        password: password,
+        password: hashedPassword,
         name: name
     });
 
@@ -31,11 +35,19 @@ app.post("/signin", async function(req, res) {
     const password = req.body.password;
 
     const response = await UserModel.findOne({
-        email: email,
-        password: password,
+        email: email
     });
 
-    if (response) {
+    if(!response){
+        res.status(403).json({
+            message: "User does not exist in our database!"
+        });
+        return
+    }
+
+    const passwordMatch = bcrypt.compare(password, response.password);
+
+    if (passwordMatch) {
         const token = jwt.sign({
             id: response._id.toString()
         }, JWT_SECRET);
