@@ -15,6 +15,9 @@ app.post("/signup", async function(req, res) {
     const password = req.body.password;
     const name = req.body.name;
 
+
+    let errorThrown = false;
+    try {
     const hashedPassword = await bcrypt.hash(password, 5);
     console.log(hashedPassword);
 
@@ -23,10 +26,18 @@ app.post("/signup", async function(req, res) {
         password: hashedPassword,
         name: name
     });
-
-    res.json({
-        message: "You are signed up"
+    } catch(e) {
+        res.json({
+        message: "User already exists"
     })
+    errorThrown = true;
+}
+
+    if (!errorThrown){
+        res.json({
+            message:"You are signed up"
+        })
+    }
 });
 
 
