@@ -5,6 +5,7 @@ const { auth, JWT_SECRET } = require("./auth");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 require('dotenv').config();
+const { z, safeParse } = require ("zod");
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -12,13 +13,32 @@ const app = express();
 app.use(express.json());
 
 app.post("/signup", async function(req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
-    const name = req.body.name;
 
 
-    let errorThrown = false;
-    try {
+    // assignment -> check that the password has 1 uppercase, 1 lowercase, 1 special character
+
+
+    // input validation
+    const requiredBody = z.object({
+        email: z.string().min(3).max(50).email(),
+        password: z.string().min(3).max(50),
+        name: z.string().min(3).max(50)
+    })
+
+    // const parseData = requiredBody.parse(req.body);
+    const parsedDataWithSuccess = requiredBody.safeParse(req.body);
+
+    if(!parsedDataWithSuccess.success){
+        res.json({
+            message: "Incorrect format"
+        })
+        return
+    }
+
+    const email = req.body.email; //string
+    const password = req.body.password; //string
+    const name = req.body.name; //string
+
     const hashedPassword = await bcrypt.hash(password, 5);
     console.log(hashedPassword);
 
@@ -27,18 +47,9 @@ app.post("/signup", async function(req, res) {
         password: hashedPassword,
         name: name
     });
-    } catch(e) {
-        res.json({
-        message: "User already exists"
+    res.json({
+        message: "You are signed up"
     })
-    errorThrown = true;
-}
-
-    if (!errorThrown){
-        res.json({
-            message:"You are signed up"
-        })
-    }
 });
 
 
