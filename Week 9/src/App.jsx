@@ -1,32 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function App (){
-  return <div>
-    <Counter></Counter>
-  </div>
+function App() {
+  return (
+    <div>
+      <Counter></Counter>
+    </div>
+  );
 }
 
-function Counter () {
+// setInterval
+function Counter() {
   const [count, setCount] = useState(0);
 
-  function increaseCount (){
-    setCount(count+1);
-  }
+  console.log("counter");
 
-  function decreaseCount () {
-    setCount(count-1);
-  }
+  useEffect(function () {
+    setInterval(function () {
+      setCount(count => count + 1);
+    }, 1000);
+    console.log("mounted");
+  }, []);
 
-  function resetCount () {
-    setCount(0);
-  }
-
-  return <div>
-    <h1>{count}</h1>
-    <button onClick={increaseCount}>Increase Count</button>
-    <button onClick={decreaseCount}>Decrease Count</button>
-    <button onClick={resetCount}>Reset Count</button>
-  </div>
+  return (
+    <div>
+      <h1>{count}</h1>
+    </div>
+  );
 }
 
 export default App;
