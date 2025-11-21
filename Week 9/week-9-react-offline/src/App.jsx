@@ -112,21 +112,39 @@
 
 // export default App;
 
-
 // props
+// function App () {
+//   return (
+//     <div>
+//       <Greeting name="Deepanshu"/>
+//     </div>
+//   )
+// }
 
-function App () {
+// function Greeting (props) {
+//   return (
+//     <h1>Hello, {props.name}! </h1>
+//   )
+// }
+
+// export default App;
+
+
+// multiple props
+function App() {
   return (
-    <div>
-      <Greeting name="Deepanshu"/>
-    </div>
+    <UserCard name="deepanshu" age={21} isOnline={true} />
   )
 }
 
-function Greeting (props) {
+function UserCard({name, age, isOnline}) {
   return (
-    <h1>Hello, {props.name}! </h1>
-  )
+    <div>
+      <h2>{name}</h2>
+      <p>Age: {age}</p>
+      <p>Status: {isOnline ? "Online" : "Offline"}</p>
+    </div>
+  );
 }
 
 export default App;
