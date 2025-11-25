@@ -1,37 +1,31 @@
-import { useState } from "react";
-import { PostComponent } from "./Post";
+import { useState } from 'react';
+import './App.css';
+import { Assignment1 } from './components/Assignment1';
+import { Assignment2 } from './components/Assignment2';
+import { Assignment3 } from './components/Assignment3';
 
 function App() {
-  const [posts, setPosts] = useState([]);
-
-  const postComponents = posts.map(post => <PostComponent
-            name={post.name}
-            subtitle={post.subtitle}
-            time={post.time}
-            image={post.image}
-            description={post.description}
-          />)
-
-  function addPost() {
-    setPosts([...posts, {
-    name: "Deepanshu",
-    subtitle: "100 followers",
-    time: "22m ago",
-    image: "https://avatars.githubusercontent.com/u/93039894?s=400&u=e35e3041fbfc9e93e8ecb7015bbd67300f32ee4b&v=4",
-    description: "How to get a Job in 2025? Here's a set of all the resources and techniques you would want to know to prepare yourself for a job..."
-    }])
-  }
+  const [selectedAssignment, setSelectedAssignment] = useState(1);
 
   return (
-    <div style={{ background: "#dfe6e9", height: "100vh" }}>
-      <button onClick={addPost}>Add Post</button>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          {postComponents}
-        </div>
+    <div style={{ textAlign: 'center', padding: '20px' }}>
+      <h1>React Hooks Assignments</h1>
+      <p>Select an assignment to view:</p>
+
+      <div style={{ marginBottom: '20px' }}>
+        <button onClick={() => setSelectedAssignment(1)} style={{ margin: '0 10px', padding: '10px' }}>Assignment 1</button>
+        <button onClick={() => setSelectedAssignment(2)} style={{ margin: '0 10px', padding: '10px' }}>Assignment 2</button>
+        <button onClick={() => setSelectedAssignment(3)} style={{ margin: '0 10px', padding: '10px' }}>Assignment 3</button>
+      </div>
+
+      <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
+        {selectedAssignment === 1 && <Assignment1 />}
+        {selectedAssignment === 2 && <Assignment2 />}
+        {selectedAssignment === 3 && <Assignment3 />}
       </div>
     </div>
   );
 }
 
 export default App;
+;
