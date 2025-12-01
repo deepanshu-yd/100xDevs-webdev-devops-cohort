@@ -12,6 +12,12 @@ function App () {
     setInterval(increaseCount, 1000);
   }, [])
 
+  useEffect(function() {
+    {
+    console.log("the count has been updated to " + count);
+  }
+  }, [count]);
+
   return <div>
     {count}
   </div>
