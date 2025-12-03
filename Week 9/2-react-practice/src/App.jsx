@@ -3,12 +3,15 @@ import { useState, useEffect } from "react";
 function App() {
   const [currentTab, setCurrentTab] = useState(1);
   const [tabData, setTabData] = useState ({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(function() {
+    setLoading("true");
     fetch("https://jsonplaceholder.typicode.com/todos/" + currentTab)
       .then(async res => {
       const json = await res.json();
       setTabData(json)
+      setLoading(false)
     });
   }, [currentTab])
 
@@ -25,8 +28,8 @@ function App() {
     <button onClick={function() {
       setCurrentTab(4)
     }} style={{color: currentTab == 4 ? "red" : "black"}}>Todo #4</button>
-
-    {tabData.title}
+<br></br>
+    {loading ? "Loading..." : tabData.title}
   </div>
 }
 
